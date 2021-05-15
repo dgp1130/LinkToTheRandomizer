@@ -4,7 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 9029989031217364476
-    second: Items Spritesheet_Sword
+    second: Items Sword
+  - first:
+      213: 6856427923752153037
+    second: Items Bow
+  - first:
+      213: -1077136126011778600
+    second: Items Bomb
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,7 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Items Spritesheet_Sword
+      name: Items Sword
       rect:
         serializedVersion: 2
         x: 81
@@ -134,6 +140,48 @@ TextureImporter:
       bones: []
       spriteID: cfd72635e27f05d70800000000000000
       internalID: 9029989031217364476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Items Bow
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 292
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcfe057aedce62f50800000000000000
+      internalID: 6856427923752153037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Items Bomb
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 269
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9d35a766e3d01f0800000000000000
+      internalID: -1077136126011778600
       vertices: []
       indices: 
       edges: []
