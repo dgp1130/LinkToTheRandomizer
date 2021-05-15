@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111c69fecea21414dbbfdba7dd607ec3, type: 3}
+  m_Name: ItemMapping
+  m_EditorClassIdentifier: 
+  swordPrefab: {fileID: 3372626589303795655, guid: 895779fd5294dfc4e85faf3cb2f8e715, type: 3}
+  bowPrefab: {fileID: 3952554467317063666, guid: b25bfa259c2d64e4c8b0bb90a65fc9b9, type: 3}
+  bombPrefab: {fileID: 8533653622642923193, guid: c484f0cdf39652843933215dc8c7bbe5, type: 3}
