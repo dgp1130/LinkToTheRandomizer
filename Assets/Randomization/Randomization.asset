@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f9ca168997b64682e6cb2705d08f8, type: 3}
   m_Name: Randomization
   m_EditorClassIdentifier: 
+  seed: 0
