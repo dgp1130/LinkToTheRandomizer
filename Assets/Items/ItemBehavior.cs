@@ -1,4 +1,5 @@
 using UnityEngine;
+using DevelWithoutACause.Randomizer;
 
 public class ItemBehavior : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class ItemBehavior : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            Debug.Log(Randomizer.Randomize());
             Destroy(gameObject);
         }
     }
