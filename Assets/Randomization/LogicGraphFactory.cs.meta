@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: d52f9ca168997b64682e6cb2705d08f8
+guid: 6ba27dbe3124c1949a4aeaa55f13873c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - logicFile: {fileID: 4900000, guid: 58ee648d6c14e534783fe0058ce3e964, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

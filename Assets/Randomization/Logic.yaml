@@ -1,0 +1,31 @@
+﻿# Schema:
+# -------
+# Checks:
+#   // Maps a check name to its incoming edges.
+#   [string]: List<
+#     // The node this incoming edge starts at (initial spawn if not set)
+#     From: string?
+#     // All the keys required to reach this node from the "From" node (none if not set).
+#     Keys: List<string>?
+#   >
+
+Checks:
+  # No requirements for left check.
+  Left:
+
+  # Middle check comes directly from left,
+  # or from the right with either Bow or Bombs.
+  Middle:
+  - From: Left
+  - From: Right
+    Keys: [Bow]
+  - From: Right
+    Keys: [Bomb]
+
+  # Right check requires Bow AND Bombs.
+  Right:
+  - Keys: [Bow, Bomb]
+
+  # End
+  End:
+  - Keys: [Sword, Bow, Bomb]

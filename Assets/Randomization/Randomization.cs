@@ -1,3 +1,5 @@
+#nullable enable
+
 using DevelWithoutACause.Randomizer;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +8,15 @@ using UnityEngine;
 public class Randomization : ScriptableObject
 {
     [SerializeField] int seed;
+    [SerializeField] TextAsset? logicFile;
 
     private Dictionary<Check, Item> randomizedItems = null!;
 
     public void OnEnable()
     {
-        randomizedItems = Randomizer.Randomize(seed);
+        var logic = LogicFile.Deserialize(logicFile!.text);
+        var logicGraph = LogicGraphFactory.From(logic);
+        randomizedItems = Randomizer.Randomize(seed, logicGraph);
     }
 
 

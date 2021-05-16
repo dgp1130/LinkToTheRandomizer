@@ -5,7 +5,7 @@ namespace DevelWithoutACause.Randomizer
 {
     public class Randomizer
     {
-        public static Dictionary<Check, Item> Randomize(int seed)
+        public static Dictionary<Check, Item> Randomize(int seed, LogicGraph graph)
         {
             // Create a pool of all items.
             var allItems = new List<Item>(Enum.GetValues(typeof(Item)) as Item[]);

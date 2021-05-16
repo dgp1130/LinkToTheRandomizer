@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Randomization
   m_EditorClassIdentifier: 
   seed: 0
+  logicFile: {fileID: 4900000, guid: 58ee648d6c14e534783fe0058ce3e964, type: 3}
