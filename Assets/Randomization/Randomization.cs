@@ -1,7 +1,7 @@
 #nullable enable
 
 using DevelWithoutACause.Randomizer;
-using System.Collections.Generic;
+using System.Collections.Immutable;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Randomization")]
@@ -10,7 +10,7 @@ public class Randomization : ScriptableObject
     [SerializeField] int seed;
     [SerializeField] TextAsset? logicFile;
 
-    private Dictionary<Check, Item> randomizedItems = null!;
+    private ImmutableDictionary<Check, Item> randomizedItems = null!;
 
     public void OnEnable()
     {

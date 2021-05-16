@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace DevelWithoutACause.Randomizer
 {
     public class Randomizer
     {
-        public static Dictionary<Check, Item> Randomize(int seed, LogicGraph graph)
+        public static ImmutableDictionary<Check, Item> Randomize(int seed, LogicGraph graph)
         {
             // Create a pool of all items.
             var allItems = new List<Item>(Enum.GetValues(typeof(Item)) as Item[]);
@@ -18,7 +19,7 @@ namespace DevelWithoutACause.Randomizer
                 { Check.Left, pool.TakeRandom(rng) },
                 { Check.Middle, pool.TakeRandom(rng) },
                 { Check.Right, pool.TakeRandom(rng) },
-            };
+            }.ToImmutableDictionary();
         }
     }
 }
