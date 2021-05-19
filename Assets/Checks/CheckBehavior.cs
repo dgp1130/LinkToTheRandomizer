@@ -19,4 +19,10 @@ public class CheckBehavior : MonoBehaviour
         var transform = GetComponent<Transform>();
         Instantiate(itemPrefab, transform);
     }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(transform.position, 0.1f);
+    }
 }
