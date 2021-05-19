@@ -6,5 +6,6 @@
         Sword,
         Bow,
         Bomb,
+        Bluepee,
     }
 }

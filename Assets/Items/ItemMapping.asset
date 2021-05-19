@@ -15,3 +15,4 @@ MonoBehaviour:
   swordPrefab: {fileID: 3372626589303795655, guid: 895779fd5294dfc4e85faf3cb2f8e715, type: 3}
   bowPrefab: {fileID: 3952554467317063666, guid: b25bfa259c2d64e4c8b0bb90a65fc9b9, type: 3}
   bombPrefab: {fileID: 8533653622642923193, guid: c484f0cdf39652843933215dc8c7bbe5, type: 3}
+  bluepeePrefab: {fileID: 306234348662122047, guid: e4b49166ba73d6147936a4e91cba9c63, type: 3}

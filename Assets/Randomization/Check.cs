@@ -4,7 +4,9 @@
     public enum Check
     {
         Left,
+        Left3,
         Middle,
         Right,
+        Right2,
     }
 }

@@ -7,7 +7,7 @@ using YamlDotNet.Serialization;
 public class LogicFile
 {
     /** Dictionary which maps the check name to a list of incoming edges. */
-    public Dictionary<string /* check name */, List<LogicCheckEntry>?>? Checks;
+    public Dictionary<string /* check name */, LogicLocation>? Checks;
 
     public static LogicFile Deserialize(string yaml)
     {
@@ -15,8 +15,21 @@ public class LogicFile
     }
 }
 
-/** Parsed representation of an incoming entry for a check in the YAML logic file. */
-public class LogicCheckEntry
+/** Parsed representation of a single logical location. */
+public class LogicLocation
+{
+    private bool checkable = false;
+    public bool Checkable
+    {
+        get => checkable;
+        set => checkable = value;
+    }
+
+    public List<LogicRoute>? Routes;
+}
+
+/** Parsed representation of an route from one location with a set of required keys. */
+public class LogicRoute
 {
     /** Check name the player must start from to get to this check. */
     public string? From { get; set; }

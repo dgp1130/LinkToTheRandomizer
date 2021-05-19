@@ -1,14 +1,18 @@
-﻿using System.Collections.Immutable;
+﻿#nullable enable
+
+using System;
+using System.Collections.Immutable;
+using System.Linq;
 
 namespace DevelWithoutACause.Randomizer
 {
     /** Represents a graph of Nodes, with Edge objects connecting them. */
     public class LogicGraph
     {
-        private readonly ImmutableHashSet<LogicNode> nodes;
-        private readonly ImmutableHashSet<LogicEdge> edges;
-        private readonly LogicNode start;
-        private readonly LogicNode end;
+        public readonly ImmutableHashSet<LogicNode> Nodes;
+        public readonly ImmutableHashSet<LogicEdge> Edges;
+        public readonly LogicNode Start;
+        public readonly LogicNode End;
 
         private LogicGraph(
             ImmutableHashSet<LogicNode> nodes,
@@ -16,10 +20,10 @@ namespace DevelWithoutACause.Randomizer
             LogicNode start,
             LogicNode end
         ) {
-            this.nodes = nodes;
-            this.edges = edges;
-            this.start = start;
-            this.end = end;
+            Nodes = nodes;
+            Edges = edges;
+            Start = start;
+            End = end;
         }
 
         /**
@@ -40,23 +44,87 @@ namespace DevelWithoutACause.Randomizer
                 end: end
             );
         }
+
+        /**
+         * Returns a new `LogicGraph` identical to `this` one, but with the given `node`
+         * transformed to contain the given `key`.
+         */
+        public LogicGraph Place(LogicNode node, LogicKey key)
+        {
+            var replacement = node.Place(key);
+
+            var nodes = Nodes
+                .Remove(node)
+                .Concat(ImmutableList.Create(replacement))
+                .ToImmutableHashSet();
+            var edges = Edges
+                .Select((edge) => edge.Start == node ? edge.ReplaceStart(replacement) : edge)
+                .Select((edge) => edge.End == node ? edge.ReplaceEnd(replacement) : edge)
+                .ToImmutableHashSet();
+            var start = Start == node ? replacement : Start;
+            var end = End == node ? replacement : End;
+
+            return new LogicGraph(
+                nodes: nodes,
+                edges: edges,
+                start: start,
+                end: end
+            );
+        }
+
+        public override string ToString()
+        {
+            return $"{{\n{string.Join("\n", Edges.Select((edge) => $"  {edge}"))}\n}}";
+        }
     }
 
     /** Represents a named location which will hold a check. */
     public class LogicNode
     {
+        /** A label for the node. */
         public readonly string Name;
 
-        private LogicNode(string name)
+        /** Whether a key can be placed at this location. */
+        public readonly bool Checkable;
+
+        /** The key currently placed at this location. */
+        public readonly LogicKey? Check;
+
+        private LogicNode(string name, bool checkable, LogicKey? check)
         {
-            this.Name = name;
+            Name = name;
+            Checkable = checkable;
+            Check = check;
         }
 
-        public static LogicNode From(string name)
+        public static LogicNode From(string name, bool checkable, LogicKey? check = null)
         {
             return new LogicNode(
-                name: name
+                name: name,
+                checkable: checkable,
+                check: check
             );
+        }
+
+        /** Returns a new `LogicNode` identical to `this` one but holding the given `key`. */
+        public LogicNode Place(LogicKey key)
+        {
+            if (Check != null)
+            {
+                throw new InvalidOperationException(
+                    $"Cannot place a key on a check that is already set with: {key}");
+            }
+
+            return new LogicNode(
+                name: Name,
+                checkable: Checkable,
+                check: key
+            );
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} ({Check?.ToString() ?? "Empty"})";
         }
     }
 
@@ -67,17 +135,17 @@ namespace DevelWithoutACause.Randomizer
      */
     public class LogicEdge
     {
-        private readonly LogicNode start;
-        private readonly LogicNode end;
-        private readonly ImmutableHashSet<LogicKey> keys;
+        public readonly LogicNode Start;
+        public readonly LogicNode End;
+        public readonly ImmutableHashSet<LogicKey> Keys;
 
         private LogicEdge(LogicNode start, LogicNode end, ImmutableHashSet<LogicKey> keys)
         {
-            this.start = start;
-            this.end = end;
-            this.keys = keys;
+            Start = start;
+            End = end;
+            Keys = keys;
         }
-
+        
         public static LogicEdge From(LogicNode start, LogicNode end, ImmutableHashSet<LogicKey> keys)
         {
             return new LogicEdge(
@@ -85,6 +153,37 @@ namespace DevelWithoutACause.Randomizer
                 end: end,
                 keys: keys
             );
+        }
+
+        /** Returns whether or not this edge can be unlocked by the given set of keys. */
+        public bool UnlockableWith(ImmutableHashSet<LogicKey> keys)
+        {
+            return Keys.IsSubsetOf(keys);
+        }
+
+        /** Returns a new `LogicEdge` identical to `this` one, but with the start node replaced. */
+        public LogicEdge ReplaceStart(LogicNode replacement)
+        {
+            return new LogicEdge(
+                start: replacement,
+                end: End,
+                keys: Keys
+            );
+        }
+
+        /** Returns a new `LogicEdge` identical to `this` one, but with the end node replaced. */
+        public LogicEdge ReplaceEnd(LogicNode replacement)
+        {
+            return new LogicEdge(
+                start: Start,
+                end: replacement,
+                keys: Keys
+            );
+        }
+
+        public override string ToString()
+        {
+            return $"{Start} -> {End} ({string.Join(", ", Keys)})";
         }
     }
 
@@ -109,10 +208,10 @@ namespace DevelWithoutACause.Randomizer
 
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj?.GetType() != this.GetType()) return false;
 
             var other = obj as LogicKey;
-            return this.Name == other.Name;
+            return this.Name == other?.Name;
         }
 
         public override int GetHashCode()

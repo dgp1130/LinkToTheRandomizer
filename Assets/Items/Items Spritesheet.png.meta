@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -1077136126011778600
     second: Items Bomb
+  - first:
+      213: 9132086760678153493
+    second: Items Bluepee
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -174,7 +177,7 @@ TextureImporter:
         width: 13
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -182,6 +185,27 @@ TextureImporter:
       bones: []
       spriteID: 8d9d35a766e3d01f0800000000000000
       internalID: -1077136126011778600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Items Bluepee
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 77
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51dd4446680bbbe70800000000000000
+      internalID: 9132086760678153493
       vertices: []
       indices: 
       edges: []

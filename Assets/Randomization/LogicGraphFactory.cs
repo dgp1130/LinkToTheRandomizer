@@ -9,22 +9,33 @@ public class LogicGraphFactory
     public static LogicGraph From(LogicFile logic)
     {
         // Get a complete set of nodes, keyed by name.
-        var startNode = LogicNode.From("Start");
-        var allNodes = logic.Checks!.Select((pair) => LogicNode.From(name: pair.Key))
-                .Concat(new List<LogicNode> { startNode })
-                .ToDictionary((node) => node.Name);
+        var startNode = LogicNode.From(name: "Start", checkable: false);
+        var allNodes = logic.Checks!
+            .Select((pair) => LogicNode.From(
+                name: pair.Key,
+                checkable: pair.Value.Checkable
+            ))
+            .Concat(new List<LogicNode> { startNode })
+            .ToDictionary((node) => node.Name);
 
         // Get a complete set of keys, keyed by name.
         var allKeys = logic.Checks!.SelectMany(
-            (pair) => (pair.Value ?? new List<LogicCheckEntry> { }).SelectMany(
-                (check) => check.Keys.Select((keyName) => LogicKey.From(keyName))
-            )
+            (pair) => (pair.Value.Routes ?? new List<LogicRoute> { })
+                .SelectMany((check) => check.Keys
+                    .Select((keyName) => LogicKey.From(keyName))
+                )
         ).Distinct()
         .ToDictionary((key) => key.Name);
 
         // Get a complete set of all the edges.
-        var edges = logic.Checks!.SelectMany(
-            (pair) => (pair.Value ?? new List<LogicCheckEntry> { }).Select((check) => {
+        var edges = logic.Checks!
+            .SelectMany((pair) => (pair.Value.Routes ?? new List<LogicRoute> {
+                new LogicRoute {
+                    From = null,
+                    Keys = new List<string> { },
+                },
+            })
+            .Select((check) => {
                 var start = check.From != null ? allNodes[check.From] : startNode;
                 var end = allNodes[pair.Key];
                 var keys = check.Keys.Select((keyName) => allKeys[keyName])

@@ -1,31 +1,58 @@
 ﻿# Schema:
 # -------
 # Checks:
-#   // Maps a check name to its incoming edges.
-#   [string]: List<
-#     // The node this incoming edge starts at (initial spawn if not set)
-#     From: string?
-#     // All the keys required to reach this node from the "From" node (none if not set).
-#     Keys: List<string>?
-#   >
+#   // A named location and its associated data.
+#   [string]:
+#     // Whether or not the location contains a check (`false` if not set).
+#     Checkable: boolean
+#     
+#     // The incoming edges to this location.
+#     Routes: List<
+#       // The location this incoming edge starts at (initial spawn if not set)
+#       From: string?
+#       // All the keys required to reach this node from the "From" node (none if not set).
+#       Keys: List<string>?
+#     >
 
 Checks:
-  # No requirements for left check.
+  # No requirements for left location.
   Left:
+    Checkable: true
 
-  # Middle check comes directly from left,
-  # or from the right with either Bow or Bombs.
+  # No requirements for a second location, but no check here.
+  Left2:
+    Checkable: false
+
+  # Third check just requires access to the second.
+  Left3:
+    Checkable: true
+    Routes:
+    - From: Left2
+
+  # Middle check comes from the right with either Bow or Bombs.
   Middle:
-  - From: Left
-  - From: Right
-    Keys: [Bow]
-  - From: Right
-    Keys: [Bomb]
+    Checkable: true
+    Routes:
+    - From: Right
+      Keys: [Bow]
+    - From: Right
+      Keys: [Bomb]
 
-  # Right check requires Bow AND Bombs.
   Right:
-  - Keys: [Bow, Bomb]
+    Checkable: true
+    Routes:
+    - Keys: [Sword]
 
-  # End
+  # Extra requirements behind a locked location.
+  Right2:
+    Checkable: true
+
+    Routes:
+    - From: Right
+      Keys: [Bomb]
+
+  # End requires Sword, Bow, AND Bombs.
   End:
-  - Keys: [Sword, Bow, Bomb]
+    Routes:
+    - From: Middle
+      Keys: [Sword, Bow, Bomb]
