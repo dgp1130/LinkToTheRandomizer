@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0096b730eb983745969871952048f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryItem: {fileID: 11400000, guid: 963965af20512794a975a40a59189fb5, type: 2}
 --- !u!61 &8473594899396629399
 BoxCollider2D:
   m_ObjectHideFlags: 0
