@@ -37,7 +37,7 @@ public class Randomization : ScriptableObject
         // Randomly place items in the graph in a logically solvable fashion.
         var randomizedGraph = Randomizer.Randomize(
             graph: logicGraph,
-            initialKeys: ImmutableHashSet<LogicKey>.Empty,
+            initialKeys: ImmutableSortedSet<LogicKey>.Empty,
             seed: seed
         );
         

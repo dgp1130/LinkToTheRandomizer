@@ -39,7 +39,7 @@ public class LogicGraphFactory
                 var start = check.From != null ? allNodes[check.From] : startNode;
                 var end = allNodes[pair.Key];
                 var keys = check.Keys.Select((keyName) => allKeys[keyName])
-                        .ToImmutableHashSet();
+                        .ToImmutableSortedSet();
                 return LogicEdge.From(
                     start: start,
                     end: end,
@@ -50,8 +50,8 @@ public class LogicGraphFactory
 
         // Construct the graph from all the parsed nodes and edges.
         return LogicGraph.From(
-            nodes: allNodes.Values.ToImmutableHashSet(),
-            edges: edges.ToImmutableHashSet(),
+            nodes: allNodes.Values.ToImmutableSortedSet(),
+            edges: edges.ToImmutableSortedSet(),
             start: startNode,
             end: allNodes["End"]
         );

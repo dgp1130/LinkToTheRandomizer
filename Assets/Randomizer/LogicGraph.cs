@@ -9,14 +9,14 @@ namespace DevelWithoutACause.Randomizer
     /** Represents a graph of Nodes, with Edge objects connecting them. */
     public class LogicGraph
     {
-        public readonly ImmutableHashSet<LogicNode> Nodes;
-        public readonly ImmutableHashSet<LogicEdge> Edges;
+        public readonly ImmutableSortedSet<LogicNode> Nodes;
+        public readonly ImmutableSortedSet<LogicEdge> Edges;
         public readonly LogicNode Start;
         public readonly LogicNode End;
 
         private LogicGraph(
-            ImmutableHashSet<LogicNode> nodes,
-            ImmutableHashSet<LogicEdge> edges,
+            ImmutableSortedSet<LogicNode> nodes,
+            ImmutableSortedSet<LogicEdge> edges,
             LogicNode start,
             LogicNode end
         ) {
@@ -32,8 +32,8 @@ namespace DevelWithoutACause.Randomizer
          * node to the end node while legally following all the edges of the graph.
          */
         public static LogicGraph From(
-            ImmutableHashSet<LogicNode> nodes,
-            ImmutableHashSet<LogicEdge> edges,
+            ImmutableSortedSet<LogicNode> nodes,
+            ImmutableSortedSet<LogicEdge> edges,
             LogicNode start,
             LogicNode end
         ) {
@@ -56,11 +56,11 @@ namespace DevelWithoutACause.Randomizer
             var nodes = Nodes
                 .Remove(node)
                 .Concat(ImmutableList.Create(replacement))
-                .ToImmutableHashSet();
+                .ToImmutableSortedSet();
             var edges = Edges
                 .Select((edge) => edge.Start == node ? edge.ReplaceStart(replacement) : edge)
                 .Select((edge) => edge.End == node ? edge.ReplaceEnd(replacement) : edge)
-                .ToImmutableHashSet();
+                .ToImmutableSortedSet();
             var start = Start == node ? replacement : Start;
             var end = End == node ? replacement : End;
 
@@ -79,7 +79,7 @@ namespace DevelWithoutACause.Randomizer
     }
 
     /** Represents a named location which will hold a check. */
-    public class LogicNode
+    public class LogicNode : IComparable<LogicNode>
     {
         /** A label for the node. */
         public readonly string Name;
@@ -122,6 +122,11 @@ namespace DevelWithoutACause.Randomizer
             );
         }
 
+        public int CompareTo(LogicNode other)
+        {
+            return Name.CompareTo(other.Name);
+        }
+
         public override string ToString()
         {
             return $"{Name} ({Check?.ToString() ?? "Empty"})";
@@ -133,20 +138,20 @@ namespace DevelWithoutACause.Randomizer
      * If the player is at the start node with *all* of the required keys, then
      * they also logically have access to the end node.
      */
-    public class LogicEdge
+    public class LogicEdge : IComparable<LogicEdge>
     {
         public readonly LogicNode Start;
         public readonly LogicNode End;
-        public readonly ImmutableHashSet<LogicKey> Keys;
+        public readonly ImmutableSortedSet<LogicKey> Keys;
 
-        private LogicEdge(LogicNode start, LogicNode end, ImmutableHashSet<LogicKey> keys)
+        private LogicEdge(LogicNode start, LogicNode end, ImmutableSortedSet<LogicKey> keys)
         {
             Start = start;
             End = end;
             Keys = keys;
         }
         
-        public static LogicEdge From(LogicNode start, LogicNode end, ImmutableHashSet<LogicKey> keys)
+        public static LogicEdge From(LogicNode start, LogicNode end, ImmutableSortedSet<LogicKey> keys)
         {
             return new LogicEdge(
                 start: start,
@@ -156,7 +161,7 @@ namespace DevelWithoutACause.Randomizer
         }
 
         /** Returns whether or not this edge can be unlocked by the given set of keys. */
-        public bool UnlockableWith(ImmutableHashSet<LogicKey> keys)
+        public bool UnlockableWith(ImmutableSortedSet<LogicKey> keys)
         {
             return Keys.IsSubsetOf(keys);
         }
@@ -181,6 +186,26 @@ namespace DevelWithoutACause.Randomizer
             );
         }
 
+        public int CompareTo(LogicEdge other)
+        {
+            // First compare the start nodes.
+            var startComparison = Start.CompareTo(other.Start);
+            if (startComparison != 0) return startComparison;
+
+            // Next compare the end nodes.
+            var endComparison = End.CompareTo(other.End);
+            if (endComparison != 0) return endComparison;
+
+            // Next compare the number of keys.
+            var keyLengthComparison = Keys.Count.CompareTo(other.Keys.Count);
+            if (keyLengthComparison != 0) return keyLengthComparison;
+
+            // Finally, compare the keys themselves. Since this is a sorted set,
+            // equivalent sets should be in the same order.
+            return Keys.Zip(other.Keys, (key, otherKey) => key.CompareTo(otherKey))
+                .FirstOrDefault((keyComparison) => keyComparison != 0);
+        }
+
         public override string ToString()
         {
             return $"{Start} -> {End} ({string.Join(", ", Keys)})";
@@ -192,7 +217,7 @@ namespace DevelWithoutACause.Randomizer
      * object may not actually be a physical key, but could be an item which helps
      * the player access a particular area.
      */
-    public class LogicKey
+    public class LogicKey : IComparable<LogicKey>
     {
         public readonly string Name;
 
@@ -217,6 +242,11 @@ namespace DevelWithoutACause.Randomizer
         public override int GetHashCode()
         {
             return Name.GetHashCode();
+        }
+
+        public int CompareTo(LogicKey other)
+        {
+            return Name.CompareTo(other.Name);
         }
 
         public override string ToString()

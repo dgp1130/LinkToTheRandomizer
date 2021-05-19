@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Linq;
 
 namespace DevelWithoutACause.Randomizer
@@ -38,7 +37,7 @@ namespace DevelWithoutACause.Randomizer
          */
         public static LogicGraph Randomize(
             LogicGraph graph,
-            ImmutableHashSet<LogicKey> initialKeys,
+            ImmutableSortedSet<LogicKey> initialKeys,
             int seed
         ) {
             var rng = new Random(seed);
@@ -52,7 +51,7 @@ namespace DevelWithoutACause.Randomizer
             var keyPool = Pool<LogicKey>.From(allKeys);
 
             // Start with the input state.
-            var startNodes = ImmutableHashSet.Create(graph.Start);
+            var startNodes = ImmutableSortedSet.Create(graph.Start);
             var state = new RandomizationState { Graph = graph, AccessibleKeys = initialKeys };
             do
             {
@@ -83,7 +82,7 @@ namespace DevelWithoutACause.Randomizer
          */
         private static RandomizationState placeKey(
             RandomizationState state,
-            ImmutableHashSet<LogicNode> startNodes,
+            ImmutableSortedSet<LogicNode> startNodes,
             Pool<LogicNode> nodePool,
             Pool<LogicKey> keyPool,
             Random rng
@@ -94,7 +93,7 @@ namespace DevelWithoutACause.Randomizer
                 startNodes: startNodes,
                 keys: state.AccessibleKeys
             );
-            var accessibleNodes = accessibleNodesEnumerable.ToImmutableHashSet();
+            var accessibleNodes = accessibleNodesEnumerable.ToImmutableSortedSet();
 
             // Find all boundary locks. These are "doors" which are accessible to the player
             // but not yet unlockable becuase of missing keys.
@@ -122,7 +121,7 @@ namespace DevelWithoutACause.Randomizer
                 Graph = state.Graph.Place(node, key),
                 AccessibleKeys = state.AccessibleKeys
                     .Concat(ImmutableList.Create(key))
-                    .ToImmutableHashSet(),
+                    .ToImmutableSortedSet(),
             };
         }
 
@@ -132,8 +131,8 @@ namespace DevelWithoutACause.Randomizer
          */
         private static IEnumerable<LogicNode> findAccessibleNodesFrom(
             LogicGraph graph,
-            ImmutableHashSet<LogicNode> startNodes,
-            ImmutableHashSet<LogicKey> keys
+            ImmutableSortedSet<LogicNode> startNodes,
+            ImmutableSortedSet<LogicKey> keys
         ) {
             return findAccessibleNodesFrom(
                 graph: graph,
@@ -149,9 +148,9 @@ namespace DevelWithoutACause.Randomizer
          */
         private static IEnumerable<LogicNode> findAccessibleNodesFrom(
             LogicGraph graph,
-            ImmutableHashSet<LogicNode> startNodes,
-            ImmutableHashSet<LogicNode> availableNodes,
-            ImmutableHashSet<LogicKey> keys
+            ImmutableSortedSet<LogicNode> startNodes,
+            ImmutableSortedSet<LogicNode> availableNodes,
+            ImmutableSortedSet<LogicKey> keys
         ) {
             // TODO: Optimize by skipping nodes which have two edges pointing to them and
             // were already checked.
@@ -167,9 +166,9 @@ namespace DevelWithoutACause.Randomizer
                 // Recursively find all accessible nodes for each newly accessible node.
                 .SelectMany((edge) => findAccessibleNodesFrom(
                     graph: graph,
-                    startNodes: ImmutableHashSet.Create(edge.End),
+                    startNodes: ImmutableSortedSet.Create(edge.End),
                     availableNodes: availableNodes.Concat(ImmutableList.Create(edge.End))
-                        .ToImmutableHashSet(),
+                        .ToImmutableSortedSet(),
                     keys: keys
                 ))
                 // Combine with nodes already known to be accessible to the player. No need
@@ -193,8 +192,8 @@ namespace DevelWithoutACause.Randomizer
         /** Returns whether or not all locations in the graph are reachable by the player. */
         private static bool allLocationsReachable(
             LogicGraph graph,
-            ImmutableHashSet<LogicNode> startNodes,
-            ImmutableHashSet<LogicKey> keys
+            ImmutableSortedSet<LogicNode> startNodes,
+            ImmutableSortedSet<LogicKey> keys
         ) {
             var accessibleNodes = findAccessibleNodesFrom(
                 graph: graph,
@@ -212,7 +211,7 @@ namespace DevelWithoutACause.Randomizer
             public LogicGraph Graph { get; set; }
 
             /** Keys currently accessible to the player with the current graph state. */
-            public ImmutableHashSet<LogicKey> AccessibleKeys { get; set; }
+            public ImmutableSortedSet<LogicKey> AccessibleKeys { get; set; }
         }
     }
 }
