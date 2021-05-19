@@ -286,6 +286,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1609576290911823102, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
+      propertyPath: m_TagString
+      value: Check
+      objectReference: {fileID: 0}
     - target: {fileID: 4694081308379534938, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_RootOrder
       value: 1
