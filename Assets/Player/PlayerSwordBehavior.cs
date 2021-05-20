@@ -1,17 +1,23 @@
-﻿using System.Collections;
+﻿#nullable enable
+
+using System.Collections;
 using UnityEngine;
 
 /** Behavior controlling the player's sword slashing functionality. */
+[RequireComponent(typeof(PlayerInventoryBehavior))]
 [RequireComponent(typeof(PlayerMovementBehavior))]
 [RequireComponent(typeof(Animator))]
 public sealed class PlayerSwordBehavior : MonoBehaviour
 {
-    private PlayerMovementBehavior movementBehavior;
-    private Animator animator;
-    private PlayerAnimationStateMachineBehavior animatorStateMachine;
+    private PlayerInventoryBehavior inventoryBehavior = null!;
+    private Inventory inventory { get => inventoryBehavior.Inventory; }
+    private PlayerMovementBehavior movementBehavior = null!;
+    private Animator animator = null!;
+    private PlayerAnimationStateMachineBehavior animatorStateMachine = null!;
 
     private void Awake()
     {
+        inventoryBehavior = GetComponent<PlayerInventoryBehavior>();
         movementBehavior = GetComponent<PlayerMovementBehavior>();
         animator = GetComponent<Animator>();
         animatorStateMachine = animator.GetBehaviour<PlayerAnimationStateMachineBehavior>();
@@ -20,6 +26,9 @@ public sealed class PlayerSwordBehavior : MonoBehaviour
     /** Executed when the player presses the "Slash Sword" button. */
     private IEnumerator OnSlashSword()
     {
+        // Don't slash if player doesn't have a sword.
+        if (!inventory.Sword) yield break;
+
         yield return movementBehavior.Stop(slashSword());
     }
 
