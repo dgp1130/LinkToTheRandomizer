@@ -12,6 +12,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Slash Sword",
+                    "type": "Button",
+                    "id": "5b66257d-93a4-41e5-8e5a-d630d4840fdb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -69,6 +77,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d1639cbf-6c7e-4cac-ae09-c5814ef4fec5",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slash Sword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
