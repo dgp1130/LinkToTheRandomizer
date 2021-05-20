@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerBehavior : MonoBehaviour
+public class PlayerMovementBehavior : MonoBehaviour
 {
     private Rigidbody2D body;
     private Vector2 moveVec = Vector2.zero;
