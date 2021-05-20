@@ -4,22 +4,33 @@ using UnityEngine.InputSystem;
 public class PlayerMovementBehavior : MonoBehaviour
 {
     private Rigidbody2D body;
+    private Animator animator;
     private Vector2 moveVec = Vector2.zero;
     [SerializeField] float speed = 1.0f;
 
-    public void Awake()
+    private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         body.MovePosition(body.position + (moveVec * Time.deltaTime * speed));
+        animate();
     }
 
-    public void OnMove(InputValue input)
+    private void OnMove(InputValue input)
     {
         moveVec = input.Get<Vector2>();
+    }
+
+    private void animate()
+    {
+        if (moveVec.y > 0) animator.SetTrigger("Walk Up");
+        else if (moveVec.y < 0) animator.SetTrigger("Walk Down");
+        else if (moveVec.x < 0) animator.SetTrigger("Walk Left");
+        else if (moveVec.x > 0) animator.SetTrigger("Walk Right");
+        else animator.SetTrigger("Stop");
     }
 }
