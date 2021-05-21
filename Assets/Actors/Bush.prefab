@@ -47,7 +47,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: -0.5}
+  m_Offset: {x: 1, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -58,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &5606406866815162020
 MonoBehaviour:
@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8532295039200960688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8061779702488701870}
@@ -144,7 +144,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1592960245635389195, guid: 44d0c60ebe263ae48901198e41fbcb17, type: 3}
+  m_Sprite: {fileID: -5553517258561946029, guid: 44d0c60ebe263ae48901198e41fbcb17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -224,19 +224,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7952447844953704226, guid: 083200ca2626b0840abee714c1047c51, type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7952447844953704226, guid: 083200ca2626b0840abee714c1047c51, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7952447844953704226, guid: 083200ca2626b0840abee714c1047c51, type: 3}
       propertyPath: m_Offset.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7952447844953704226, guid: 083200ca2626b0840abee714c1047c51, type: 3}
       propertyPath: m_Offset.y
-      value: -0.5
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 083200ca2626b0840abee714c1047c51, type: 3}
