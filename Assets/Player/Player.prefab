@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Direction: 0
-  speed: 5
+  speed: 7.5
 --- !u!114 &4707550265847180368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,18 +175,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00096412003, y: -0.1412052}
+  m_Offset: {x: 0, y: -0.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.6875}
+    oldSize: {x: 1, y: 1.375}
     newSize: {x: 0.5, y: 0.6875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.531446, y: 0.3093935}
+  m_Size: {x: 1, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &7041285005700344434
 MonoBehaviour:
@@ -241,11 +241,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.x
-      value: 0.85
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: Damage
@@ -323,11 +331,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.x
-      value: 0.9
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.y
-      value: 0.55
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: damageConfig
@@ -401,11 +417,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.y
-      value: 0.875
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: damageConfig
@@ -479,11 +503,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 1.0056517
       objectReference: {fileID: 0}
     - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: m_Size.y
-      value: 0.875
+      value: 1.7480392
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.25282586
+      objectReference: {fileID: 0}
+    - target: {fileID: -5816893345642979339, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.061231166
       objectReference: {fileID: 0}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: damageConfig
