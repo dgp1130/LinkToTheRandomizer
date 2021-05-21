@@ -13,6 +13,7 @@ public sealed class PlayerMovementBehavior : MonoBehaviour
     private Rigidbody2D body = null!;
     private Animator animator = null!;
     private Vector2 moveVec = Vector2.zero;
+    public Direction Direction = Direction.North;
     private bool canMove = true;
     [SerializeField] float speed = 1.0f;
 
@@ -26,8 +27,17 @@ public sealed class PlayerMovementBehavior : MonoBehaviour
     {
         if (!canMove) return;
 
+        // Get the direction the player is now moving (could be `null` if stopped).
+        var newDirection = getDirection();
+
+        // Animate the player with that direction.
+        animate(newDirection);
+
+        // Update the Direction field, but fall back to the previous value. That way it is never
+        // `null` and will always be the direction the player is facing, even if stopped.
+        Direction = newDirection ?? Direction;
+
         body.MovePosition(body.position + (moveVec * Time.deltaTime * speed));
-        animate();
     }
 
     private void OnMove(InputValue input)
@@ -35,13 +45,36 @@ public sealed class PlayerMovementBehavior : MonoBehaviour
         moveVec = input.Get<Vector2>();
     }
 
-    private void animate()
+    /** Returns the direction the player is moving, or `null` if not moving. */
+    private Direction? getDirection()
     {
-        if (moveVec.y > 0) animator.SetTrigger("Walk Up");
-        else if (moveVec.y < 0) animator.SetTrigger("Walk Down");
-        else if (moveVec.x < 0) animator.SetTrigger("Walk Left");
-        else if (moveVec.x > 0) animator.SetTrigger("Walk Right");
-        else stopAnimations();
+        if (moveVec.y > 0) return Direction.North;
+        else if (moveVec.y < 0) return Direction.South;
+        else if (moveVec.x < 0) return Direction.West;
+        else if (moveVec.x > 0) return Direction.East;
+        else return null;
+    }
+
+    private void animate(Direction? direction)
+    {
+        switch (direction)
+        {
+            case Direction.North:
+                animator.SetTrigger("Walk Up");
+                break;
+            case Direction.South:
+                animator.SetTrigger("Walk Down");
+                break;
+            case Direction.West:
+                animator.SetTrigger("Walk Left");
+                break;
+            case Direction.East:
+                animator.SetTrigger("Walk Right");
+                break;
+            case null:
+                stopAnimations();
+                break;
+        }
     }
 
     // Note: Animations are played every frame, and triggers are reset after a transition

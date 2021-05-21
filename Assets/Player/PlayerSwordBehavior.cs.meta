@@ -3,7 +3,9 @@ guid: 3777a30a01a564148a20ee52739469bb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - swordDamage: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
+  - hitBoxPrefab: {fileID: 4295484438666768443, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
