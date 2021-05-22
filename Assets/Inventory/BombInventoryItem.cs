@@ -5,10 +5,10 @@
 public class BombInventoryItem : InventoryItem
 {
     /** How much damage a single bomb explosion does. */
-    [SerializeField] int Damage;
+    [SerializeField] public DamageConfig Damage;
 
     /** How many bombs a player can hold in total. */
-    [SerializeField] int MaxBombs;
+    [SerializeField] public int MaxBombs;
 
     public override void GiveTo(Inventory inventory)
     {

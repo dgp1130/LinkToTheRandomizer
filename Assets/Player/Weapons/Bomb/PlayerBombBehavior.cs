@@ -4,22 +4,30 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementBehavior))]
+[RequireComponent(typeof(PlayerInventoryBehavior))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerBombBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject bombPrefab = null!;
     private PlayerMovementBehavior movementBehavior = null!;
+    private PlayerInventoryBehavior inventoryBehavior = null!;
     private new BoxCollider2D collider = null!;
+
+    private Inventory inventory { get => inventoryBehavior.Inventory; }
 
     private void Awake()
     {
         movementBehavior = GetComponent<PlayerMovementBehavior>();
+        inventoryBehavior = GetComponent<PlayerInventoryBehavior>();
         collider = GetComponent<BoxCollider2D>();
     }
 
     /** Executed when the player presses the "Place Bomb" button. */
     private void OnPlaceBomb()
     {
+        var bombsItem = inventory.Bombs;
+        if (!bombsItem) return; // Player has not yet picked up bombs.
+
         // Get the position in front of the player to spawn the bomb at.
         var bombSpawnPos =
             transform.position + getBombDropLocation(movementBehavior.Direction);
@@ -28,6 +36,7 @@ public class PlayerBombBehavior : MonoBehaviour
         if (Physics2D.OverlapBox(bombSpawnPos, 2 * Vector2.one, 0)) return;
 
         // Spawn the bomb as a sibling object.
+        BombBehavior.NextBombDamage = bombsItem!.Damage.Create();
         Instantiate(bombPrefab, bombSpawnPos, Quaternion.identity, transform.parent);
     }
 

@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb4faabff612504bbccdec7015796b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBox: {fileID: 4476378611012463489}
 --- !u!50 &2205252978703761401
 Rigidbody2D:
   serializedVersion: 4
@@ -207,6 +208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+--- !u!1 &4476378611012463489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4295484438666768443, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+  m_PrefabInstance: {fileID: 397419541224659898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8088534840898981550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8485860742671176980, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
