@@ -1,3 +1,6 @@
+#nullable enable
+
+using System;
 using UnityEngine;
 
 /**
@@ -10,8 +13,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Defense")]
 public class Defense : ScriptableObject
 {
-    /** Resistance to base damage. */
-    [SerializeField] public Resistence BaseResist;
+    /** Resistence to base damage. */
+    [SerializeField] public Resistence? BaseResist;
+    /** Resistence to explosive damage. */
+    [SerializeField] public Resistence? ExplosiveResist;
 
     /**
      * Applies this defense to the given damage object and returns a new,
@@ -20,7 +25,16 @@ public class Defense : ScriptableObject
     public Damage Reduce(Damage damage)
     {
         return Damage.From(
-            baseDamage: BaseResist.Resist(damage.BaseDamage)
+            baseDamage: getResist(BaseResist)(damage.BaseDamage),
+            explosiveDamage: getResist(ExplosiveResist)(damage.ExplosiveDamage)
         );
+    }
+
+    /** Returns the function which applies resistence to a damage value. */
+    private static Func<int, int> getResist(Resistence? resistence)
+    {
+        // If no resistence value is present, don't resist it at all.
+        static int identity(int damage) => damage;
+        return resistence ? resistence!.Resist : (Func<int, int>) identity;
     }
 }

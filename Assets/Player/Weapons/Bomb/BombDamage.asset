@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ecd4989039b684fa58287189e72fa1, type: 3}
   m_Name: BombDamage
   m_EditorClassIdentifier: 
-  BaseDamage: 30
+  BaseDamage: 0
+  ExplosiveDamage: 30
