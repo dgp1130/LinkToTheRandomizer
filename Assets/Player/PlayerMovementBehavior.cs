@@ -1,5 +1,6 @@
 #nullable enable
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ public sealed class PlayerMovementBehavior : MonoBehaviour
     private Rigidbody2D body = null!;
     private Animator animator = null!;
     private Vector2 moveVec = Vector2.zero;
-    public Direction Direction = Direction.North;
+    [NonSerialized] public Direction Direction = Direction.North;
     private bool canMove = true;
     [SerializeField] float speed = 1.0f;
 
