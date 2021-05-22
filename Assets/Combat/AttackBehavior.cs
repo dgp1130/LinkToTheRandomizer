@@ -26,7 +26,7 @@ public class AttackBehavior : MonoBehaviour
             if (damage != null) return damage; // Use cached value if present.
 
             // Validate inputs, we expect one xor the other.
-            if (DamageInput == null && !DamageConfig) throw new ArgumentException($"{GetType().Name} requires {nameof(DamageConfig)} xor {nameof(DamageInput)} to be set, but neither set set.");
+            if (DamageInput == null && !DamageConfig) throw new ArgumentException($"{GetType().Name} requires {nameof(DamageConfig)} xor {nameof(DamageInput)} to be set, but neither were set.");
             if (DamageInput != null && DamageConfig) throw new ArgumentException($"{GetType().Name} requires {nameof(DamageConfig)} xor {nameof(DamageInput)} to be set, but *both* were set.");
 
             // Use whichever value we have.

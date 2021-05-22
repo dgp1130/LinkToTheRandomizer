@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe2b7b7435988a4684f827cba4ff249, type: 3}
   m_Name: Bombs
   m_EditorClassIdentifier: 
-  Damage: 30
+  Damage: {fileID: 11400000, guid: 0eab60560413c2b4bab63dba0949c41f, type: 2}
   MaxBombs: 30

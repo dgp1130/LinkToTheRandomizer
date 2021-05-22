@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f0710f75507f045b15267dec1ede6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: 0
   speed: 10
 --- !u!114 &4707550265847180368
 MonoBehaviour:
@@ -274,6 +273,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: DamageConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
+    - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: damageConfig
       value: 
       objectReference: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
@@ -359,6 +362,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.85
       objectReference: {fileID: 0}
+    - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: DamageConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: damageConfig
       value: 
@@ -446,6 +453,10 @@ PrefabInstance:
       value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: DamageConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
+    - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: damageConfig
       value: 
       objectReference: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
@@ -531,6 +542,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.2
       objectReference: {fileID: 0}
+    - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
+      propertyPath: DamageConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6df36d0692c05804a942b2b53b841162, type: 2}
     - target: {fileID: -3278043949854030508, guid: 6fd59512a6344b64f86de7abf5d0aa07, type: 3}
       propertyPath: damageConfig
       value: 
