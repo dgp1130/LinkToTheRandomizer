@@ -22,6 +22,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Shoot Arrow",
+                    "type": "Button",
+                    "id": "ad85931f-776f-4fdc-8cab-814bad88ac3f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Place Bomb",
                     "type": "Button",
                     "id": "2e85fcc0-895a-45c2-930d-38b63ed7694e",
@@ -100,11 +108,22 @@
                 {
                     "name": "",
                     "id": "f7d77efa-163f-490d-8d95-c65e94338d34",
-                    "path": "<Keyboard>/period",
+                    "path": "<Keyboard>/slash",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Place Bomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d56f357-c62e-42e6-9789-ee09f014801b",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot Arrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

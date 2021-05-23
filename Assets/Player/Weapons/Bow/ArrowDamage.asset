@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 883cc7b8f82ed5c428f39b8ce06a3f69, type: 3}
-  m_Name: RockDefense
+  m_Script: {fileID: 11500000, guid: 74ecd4989039b684fa58287189e72fa1, type: 3}
+  m_Name: ArrowDamage
   m_EditorClassIdentifier: 
-  BaseResist: {fileID: 11400000, guid: ec45ab8613083c94394d6df4d32fe7b9, type: 2}
-  ExplosiveResist: {fileID: 0}
+  BaseDamage: 5
+  ExplosiveDamage: 0
