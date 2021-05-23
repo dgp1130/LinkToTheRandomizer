@@ -1943,6 +1943,12 @@ TextureImporter:
   - first:
       213: -150431187584277771
     second: Clifs and Water Tiles Spritesheet_646
+  - first:
+      213: -703893930611579173
+    second: Clifs and Water Tiles Bridge
+  - first:
+      213: 5435825278257759971
+    second: Clifs and Water Tiles Bridge Thin
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -15638,6 +15644,48 @@ TextureImporter:
       bones: []
       spriteID: 5f226e4c1af89edf0800000000000000
       internalID: -150431187584277771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clifs and Water Tiles Bridge
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 259
+        width: 32
+        height: 32
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd6e75213344b36f0800000000000000
+      internalID: -703893930611579173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clifs and Water Tiles Bridge Thin
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 275
+        width: 32
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e684a35a4eef6b40800000000000000
+      internalID: 5435825278257759971
       vertices: []
       indices: 
       edges: []
