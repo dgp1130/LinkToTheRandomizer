@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider2D))]
 public sealed class PlayerMovementBehavior : MonoBehaviour
 {
     private Rigidbody2D body = null!;
@@ -17,11 +18,13 @@ public sealed class PlayerMovementBehavior : MonoBehaviour
     [NonSerialized] public Direction Direction = Direction.North;
     private bool canMove = true;
     [SerializeField] float speed = 1.0f;
+    private new BoxCollider2D collider = null!;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     private void FixedUpdate()
@@ -189,5 +192,31 @@ public sealed class PlayerMovementBehavior : MonoBehaviour
     {
         if (prev != null) yield return prev;
         yield return yieldInstructions;
+    }
+
+    /**
+     * The "extent" of the player in the direction they are currently facing. "Extent"
+     * in this context aligns with the definition in the `Bounds` class, meaning the
+     * distance from the center of a collider to its edge in a particular dimension. This
+     * point effectively aligns with the edge of the player in the forward (currently
+     * facing) direction.
+     */
+    public Vector2 ForwardExtent
+    {
+        get
+        {
+            Vector2 centerRelative = collider.bounds.center - transform.position;
+            switch (Direction)
+            {
+                case Direction.North:
+                case Direction.South:
+                    return centerRelative + (Direction.ToVector() * collider.bounds.extents.y);
+                case Direction.West:
+                case Direction.East:
+                    return centerRelative + (Direction.ToVector() * collider.bounds.extents.x);
+                default:
+                    throw new ArgumentException($"Unknown direction: {Direction}.");
+            }
+        }
     }
 }
