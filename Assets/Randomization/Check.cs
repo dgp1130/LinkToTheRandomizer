@@ -3,10 +3,10 @@
     /** Enum of check locations an item can be randomized to. */
     public enum Check
     {
+        Bushes,
         Left,
-        Left3,
         Middle,
-        Right,
-        Right2,
+        Rocks,
+        GrassyKnoll,
     }
 }

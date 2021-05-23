@@ -15,41 +15,32 @@
 #     >
 
 Checks:
-  # No requirements for left location.
-  Left:
-    Checkable: true
-
-  # No requirements for a second location, but no check here.
-  Left2:
-    Checkable: false
-
-  # Third check just requires access to the second.
-  Left3:
-    Checkable: true
-    Routes:
-    - From: Left2
-
-  # Middle check comes from the right with either Bow or Bombs.
-  Middle:
-    Checkable: true
-    Routes:
-    - From: Right
-      Keys: [Bow]
-    - From: Right
-      Keys: [Bomb]
-
-  Right:
+  Bushes:
     Checkable: true
     Routes:
     - Keys: [Sword]
+    - Keys: [Bomb] # Can also blast bushes away.
 
-  # Extra requirements behind a locked location.
-  Right2:
+  # No requirements for a second location, but no check here.
+  Intermediate:
+    Checkable: false
+
+  # Left check just requires access to the intermediate area.
+  Left:
+    Checkable: true
+    Routes:
+    - From: Intermediate
+
+  Middle:
     Checkable: true
 
+  Rocks:
+    Checkable: true
     Routes:
-    - From: Right
-      Keys: [Bomb]
+    - Keys: [Bomb]
+
+  GrassyKnoll:
+    Checkable: true
 
   # End requires Sword, Bow, AND Bombs.
   End:
