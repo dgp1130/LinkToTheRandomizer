@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6f254448e240b4e9784bc843f75a75, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: {fileID: 11400000, guid: f852d08e626d9194a9a44f77a4fda8e7, type: 2}
+  Speed: 20
   MaxArrows: 30

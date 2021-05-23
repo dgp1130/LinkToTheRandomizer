@@ -1,0 +1,58 @@
+#nullable enable
+
+using System;
+using UnityEngine;
+
+/** Manages a fired arrow in the world. */
+public sealed class ArrowBehavior : MonoBehaviour
+{
+    [SerializeField] private GameObject hitBox = null!;
+
+    /** Speed of the arrow in units per second. */
+    private float speed;
+
+    /**
+     * Parameters to use for the next `ArrowBehavior` to be instantiated.
+     * 
+     * Before calling `Instantiate()` on an object with a `ArrowBehavior`, you *must* set
+     * `ArrowBehavior.NextArrowParams` with the corresponding parameters to use for the
+     * arrow.
+     */
+    public static Params? NextArrowParams;
+
+    private void Awake()
+    {
+        // Read and validate the damage input pulled from the static reference.
+        if (NextArrowParams == null) throw new ArgumentException($"{GetType().Name} requires the static {nameof(NextArrowParams)} property to be set before calling `Instantiate()`.");
+        var @params = NextArrowParams!;
+        NextArrowParams = null; // Clear static field for next instantiation.
+
+        var attackBehavior = hitBox.GetComponent<AttackBehavior>();
+        attackBehavior.DamageInput = @params.Damage;
+
+        speed = @params.Speed;
+    }
+
+    private void FixedUpdate()
+    {
+        // Move the arrow forward each frame.
+        var forward = transform.rotation * Vector3.up;
+        transform.position += forward * speed * Time.deltaTime;
+    }
+
+    /** Parameters for a dynamically instantiated `ArrowBehavior` object. */
+    public sealed class Params
+    {
+        /** The damage the arrow will do on hit. */
+        public readonly Damage Damage;
+
+        /** The speed the arrow moves in units per second. */
+        public readonly float Speed;
+
+        public Params(Damage damage, float speed)
+        {
+            Damage = damage;
+            Speed = speed;
+        }
+    }
+}

@@ -5,10 +5,13 @@
 public class BowInventoryItem : InventoryItem
 {
     /** How much damage a single arrow does. */
-    [SerializeField] int Damage;
+    [SerializeField] public DamageConfig Damage;
+
+    /** Speed of the arrow in units / second. */
+    [SerializeField] public float Speed;
 
     /** How many arrows a player can hold in total. */
-    [SerializeField] int MaxArrows;
+    [SerializeField] public int MaxArrows;
 
     public override void GiveTo(Inventory inventory)
     {
