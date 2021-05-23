@@ -12,6 +12,8 @@ using UnityEngine;
  */
 public class DefenseBehavior : MonoBehaviour
 {
+    /** The evasion stat to apply to all incoming attacks. */
+    [SerializeField] public Evasion? Evasion;
     /** The defense stat to apply to all incoming attacks. */
     [SerializeField] public Defense Defense = null!;
     /** The target of any received attacks. Must have a `HealthBehavior` component. */
@@ -28,16 +30,19 @@ public class DefenseBehavior : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)
+    /** Returns whether or not the defender successfully evaded the incoming attack. */
+    public bool Evade(Damage damage)
     {
-        // Ignore any collisions that are not attacks.
-        var attack = collider.gameObject.GetComponent<AttackBehavior>();
-        if (!attack) return;
+        return Evasion ? Evasion!.Evade(damage) : false;
+    }
 
+    /** Receives some damage from an attack. */
+    public void Receive(Damage damage)
+    {
         // Apply the defense stat to reduce damage.
-        var damage = Defense.Reduce(attack.Damage);
+        var reduced = Defense.Reduce(damage);
 
         // Apply resulting damage to the target.
-        healthBehavior.Receive(damage);
+        healthBehavior.Receive(reduced);
     }
 }

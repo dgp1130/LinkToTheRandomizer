@@ -46,6 +46,12 @@ public class AttackBehavior : MonoBehaviour
         var defense = collider.gameObject.GetComponent<DefenseBehavior>();
         if (!defense) return;
 
+        // Check if the defender successfully evaded the attack.
+        if (defense.Evade(Damage)) return;
+
+        // Successfully hit the target, apply damage.
+        defense.Receive(Damage);
+
         Hit?.Invoke(this, collider.gameObject);
     }
 }

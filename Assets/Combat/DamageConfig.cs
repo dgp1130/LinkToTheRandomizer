@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Damage")]
 public class DamageConfig : ScriptableObject
 {
+    /** The height the attack is at. */
+    [SerializeField] private Height height;
     /** Base damage to deal for the associated attack. */
     [SerializeField] private int BaseDamage;
     /** Explosive damage done by this attack. */
@@ -13,6 +15,7 @@ public class DamageConfig : ScriptableObject
     public Damage Create()
     {
         return Damage.From(
+            height: height,
             baseDamage: BaseDamage,
             explosiveDamage: ExplosiveDamage
         );

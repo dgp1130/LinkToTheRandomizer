@@ -25,6 +25,7 @@ public class Defense : ScriptableObject
     public Damage Reduce(Damage damage)
     {
         return Damage.From(
+            height: damage.Height,
             baseDamage: getResist(BaseResist)(damage.BaseDamage),
             explosiveDamage: getResist(ExplosiveResist)(damage.ExplosiveDamage)
         );

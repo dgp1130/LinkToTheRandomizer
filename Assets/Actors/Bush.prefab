@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: Defense
       value: 
       objectReference: {fileID: 11400000, guid: e43f4444dd6f63c48bb98a7d4fbbf16b, type: 2}
+    - target: {fileID: -6666422827885741460, guid: 083200ca2626b0840abee714c1047c51, type: 3}
+      propertyPath: Evasion
+      value: 
+      objectReference: {fileID: 11400000, guid: d57a8c0ab67446d4eb9a77765489366f, type: 2}
     - target: {fileID: 2975366565114470511, guid: 083200ca2626b0840abee714c1047c51, type: 3}
       propertyPath: m_Name
       value: HurtBox
