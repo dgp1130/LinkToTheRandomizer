@@ -4,9 +4,11 @@ using System;
 using UnityEngine;
 
 /** Manages a fired arrow in the world. */
+[RequireComponent(typeof(Renderer))]
 public sealed class ArrowBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject hitBox = null!;
+    private new Renderer renderer = null!;
 
     /** Speed of the arrow in units per second. */
     private float speed;
@@ -31,10 +33,15 @@ public sealed class ArrowBehavior : MonoBehaviour
         attackBehavior.DamageInput = @params.Damage;
 
         speed = @params.Speed;
+
+        renderer = GetComponent<Renderer>();
     }
 
     private void FixedUpdate()
     {
+        // Delete the arrow once it flies offscreen.
+        if (!renderer.isVisible) Destroy(gameObject);
+
         // Move the arrow forward each frame.
         var forward = transform.rotation * Vector3.up;
         transform.position += forward * speed * Time.deltaTime;
