@@ -33,4 +33,19 @@ public class AttackBehavior : MonoBehaviour
             return damage ??= DamageInput ?? DamageConfig!.Create();
         }
     }
+
+    /**
+     * Triggers whenever a collision with another object (that can receive damage) is detected.
+     * The `GameObject` included in the other object which was hit.
+     */
+    public event EventHandler<GameObject>? Hit;
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        // Ignore any collisions that are not allowed to be hit.
+        var defense = collider.gameObject.GetComponent<DefenseBehavior>();
+        if (!defense) return;
+
+        Hit?.Invoke(this, collider.gameObject);
+    }
 }

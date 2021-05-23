@@ -31,10 +31,17 @@ public sealed class ArrowBehavior : MonoBehaviour
 
         var attackBehavior = hitBox.GetComponent<AttackBehavior>();
         attackBehavior.DamageInput = @params.Damage;
+        attackBehavior.Hit += onHit;
 
         speed = @params.Speed;
 
         renderer = GetComponent<Renderer>();
+    }
+
+    private void OnDestroy()
+    {
+        var attackBehavior = hitBox.GetComponent<AttackBehavior>();
+        attackBehavior.Hit -= onHit;
     }
 
     private void FixedUpdate()
@@ -46,6 +53,9 @@ public sealed class ArrowBehavior : MonoBehaviour
         var forward = transform.rotation * Vector3.up;
         transform.position += forward * speed * Time.deltaTime;
     }
+
+    // Destory the arrow when it hits anything.
+    private void onHit(object sender, GameObject target) => Destroy(gameObject);
 
     /** Parameters for a dynamically instantiated `ArrowBehavior` object. */
     public sealed class Params
