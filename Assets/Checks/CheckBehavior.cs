@@ -23,6 +23,6 @@ public class CheckBehavior : MonoBehaviour
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position, 0.1f);
+        Gizmos.DrawSphere(transform.position, 0.5f);
     }
 }
