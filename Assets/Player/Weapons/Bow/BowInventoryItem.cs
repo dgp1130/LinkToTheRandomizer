@@ -8,6 +8,7 @@ public class BowInventoryItem : InventoryItem
     [SerializeField] public DamageConfig Damage;
 
     /** Speed of the arrow in units / second. */
+    [Tooltip("Speed of an arrow in units per second.")]
     [SerializeField] public float Speed;
 
     /** How many arrows a player can hold in total. */
