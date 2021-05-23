@@ -211,7 +211,7 @@ TextureImporter:
     second: Overworld Tiles Spritesheet_68
   - first:
       213: -3414234923318119977
-    second: Overworld Tiles Spritesheet_69
+    second: Overworld Rock
   - first:
       213: 359586170835069532
     second: Overworld Tiles Spritesheet_70
@@ -3157,7 +3157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld Tiles Spritesheet_69
+      name: Overworld Rock
       rect:
         serializedVersion: 2
         x: 761
