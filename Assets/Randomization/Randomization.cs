@@ -8,7 +8,7 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Randomization")]
-public class Randomization : ScriptableObject
+public sealed class Randomization : ScriptableObject
 {
     [SerializeField] int seed;
     [SerializeField] TextAsset? logicFile;

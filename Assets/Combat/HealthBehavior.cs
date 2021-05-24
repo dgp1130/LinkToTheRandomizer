@@ -3,7 +3,7 @@
 using UnityEngine;
 
 /** Behavior representing the health mechanic of an actor. */
-public class HealthBehavior : MonoBehaviour
+public sealed class HealthBehavior : MonoBehaviour
 {
     /** Total health for the actor. */
     [SerializeField] private int health;

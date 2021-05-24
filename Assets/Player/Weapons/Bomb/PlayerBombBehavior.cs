@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementBehavior))]
 [RequireComponent(typeof(PlayerInventoryBehavior))]
-public class PlayerBombBehavior : MonoBehaviour
+public sealed class PlayerBombBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject bombPrefab = null!;
     private PlayerMovementBehavior movementBehavior = null!;

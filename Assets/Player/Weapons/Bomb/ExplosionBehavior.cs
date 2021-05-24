@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class ExplosionBehavior : MonoBehaviour
+public sealed class ExplosionBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject hitBox = null!;
 

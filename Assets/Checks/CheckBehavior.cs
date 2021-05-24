@@ -1,7 +1,6 @@
-using DevelWithoutACause.Randomizer;
 using UnityEngine;
 
-public class CheckBehavior : MonoBehaviour
+public sealed class CheckBehavior : MonoBehaviour
 {
     [SerializeField] Randomization randomization;
     [SerializeField] ItemMapping itemMapping;

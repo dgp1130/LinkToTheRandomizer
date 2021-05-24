@@ -3,7 +3,7 @@ using DevelWithoutACause.Randomizer;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/ItemMapping")]
-public class ItemMapping : ScriptableObject
+public sealed class ItemMapping : ScriptableObject
 {
     [SerializeField] GameObject swordPrefab;
     [SerializeField] GameObject bowPrefab;

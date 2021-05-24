@@ -12,7 +12,7 @@ using UnityEngine;
  * a `Damage` object must be provided.
  * </summary>
  */
-public class AttackBehavior : MonoBehaviour
+public sealed class AttackBehavior : MonoBehaviour
 {
     [SerializeField] public DamageConfig? DamageConfig;
     [NonSerialized] public Damage? DamageInput;

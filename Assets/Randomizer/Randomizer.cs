@@ -25,7 +25,7 @@ namespace DevelWithoutACause.Randomizer
     /// 8.  All checks are now filled, all locations are proven to be accessible (based on the items
     ///     placed before step 6), and the randomization is complete.
     /// </summary>
-    public class Randomizer
+    public sealed class Randomizer
     {
         /**
          * Returns a randomized version of the given `LogicGraph`. Keys required by the graph are
@@ -205,7 +205,7 @@ namespace DevelWithoutACause.Randomizer
         }
 
         /** Internal data type representing the current state of the randomization process. */
-        private class RandomizationState
+        private sealed class RandomizationState
         {
             /** The current graph with some keys placed. */
             public LogicGraph Graph { get; set; }

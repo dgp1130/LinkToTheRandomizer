@@ -3,7 +3,7 @@
 using System;
 using UnityEngine;
 
-public class ItemBehavior : MonoBehaviour
+public sealed class ItemBehavior : MonoBehaviour
 {
     /** The `InventoryItem` to be given to the player's inventory when picked up. */
     [SerializeField] InventoryItem? inventoryItem;

@@ -7,7 +7,7 @@ using System.Linq;
 namespace DevelWithoutACause.Randomizer
 {
     /** Represents a graph of Nodes, with Edge objects connecting them. */
-    public class LogicGraph
+    public sealed class LogicGraph
     {
         public readonly ImmutableSortedSet<LogicNode> Nodes;
         public readonly ImmutableSortedSet<LogicEdge> Edges;
@@ -79,7 +79,7 @@ namespace DevelWithoutACause.Randomizer
     }
 
     /** Represents a named location which will hold a check. */
-    public class LogicNode : IComparable<LogicNode>
+    public sealed class LogicNode : IComparable<LogicNode>
     {
         /** A label for the node. */
         public readonly string Name;
@@ -138,7 +138,7 @@ namespace DevelWithoutACause.Randomizer
      * If the player is at the start node with *all* of the required keys, then
      * they also logically have access to the end node.
      */
-    public class LogicEdge : IComparable<LogicEdge>
+    public sealed class LogicEdge : IComparable<LogicEdge>
     {
         public readonly LogicNode Start;
         public readonly LogicNode End;
@@ -217,7 +217,7 @@ namespace DevelWithoutACause.Randomizer
      * object may not actually be a physical key, but could be an item which helps
      * the player access a particular area.
      */
-    public class LogicKey : IComparable<LogicKey>
+    public sealed class LogicKey : IComparable<LogicKey>
     {
         public readonly string Name;
 

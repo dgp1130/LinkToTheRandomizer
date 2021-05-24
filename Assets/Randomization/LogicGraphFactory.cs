@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-public class LogicGraphFactory
+public sealed class LogicGraphFactory
 {
     /** Returns a LogicGraph from a LogicFile. */
     public static LogicGraph From(LogicFile logic)

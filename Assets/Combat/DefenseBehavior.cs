@@ -10,7 +10,7 @@ using UnityEngine;
  * applies the result to the given target's `HealthBehavior`.
  * </summary>
  */
-public class DefenseBehavior : MonoBehaviour
+public sealed class DefenseBehavior : MonoBehaviour
 {
     /** The evasion stat to apply to all incoming attacks. */
     [SerializeField] public Evasion? Evasion;

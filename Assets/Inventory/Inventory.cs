@@ -8,7 +8,7 @@ using UnityEngine;
  * All fields should be `NonSerialized` so they are not persisted between game runs.
  */
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Inventory")]
-public class Inventory : ScriptableObject
+public sealed class Inventory : ScriptableObject
 {
     /** The number of rupees held by the player. */
     [NonSerialized] public int Rupees = 0;

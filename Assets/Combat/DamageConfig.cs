@@ -2,7 +2,7 @@ using UnityEngine;
 
 /** Scriptable object which defines the parameters necessary to create `Attack `objects. */
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Damage")]
-public class DamageConfig : ScriptableObject
+public sealed class DamageConfig : ScriptableObject
 {
     /** The height the attack is at. */
     [SerializeField] private Height height;

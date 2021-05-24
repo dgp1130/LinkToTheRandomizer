@@ -6,7 +6,7 @@ using UnityEngine;
 
 /** Manages a placed bomb in the world and detonates it after the appropriate length of time. */
 [RequireComponent(typeof(Animator))]
-public class BombBehavior : MonoBehaviour
+public sealed class BombBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject explosionPrefab = null!;
     private Damage damage = null!;

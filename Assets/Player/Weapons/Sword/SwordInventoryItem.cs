@@ -4,7 +4,7 @@ using UnityEngine;
 
 /** Represents a sword held in the player's inventory. */
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/SwordInventoryItem")]
-public class SwordInventoryItem : InventoryItem
+public sealed class SwordInventoryItem : InventoryItem
 {
     [SerializeField] int Damage;
 

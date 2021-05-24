@@ -3,7 +3,7 @@
 using System;
 using UnityEngine;
 
-public class ExplosionAnimationStateMachineBehavior : StateMachineBehaviour
+public sealed class ExplosionAnimationStateMachineBehavior : StateMachineBehaviour
 {
     /** An event triggered when the explosion animation is finished. */
     public event EventHandler? AnimationFinished;

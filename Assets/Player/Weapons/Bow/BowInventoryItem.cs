@@ -2,7 +2,7 @@
 
 /** Represents a bow held in the player's inventory. */
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/BowInventoryItem")]
-public class BowInventoryItem : InventoryItem
+public sealed class BowInventoryItem : InventoryItem
 {
     /** How much damage a single arrow does. */
     [SerializeField] public DamageConfig Damage;

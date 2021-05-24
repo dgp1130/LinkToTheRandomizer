@@ -1,7 +1,7 @@
 #nullable enable
 
 /** Simple data class representing the damage done by a particular attack. */
-public class Damage
+public sealed class Damage
 {
     /** The height the attack is at. */
     public readonly Height Height;

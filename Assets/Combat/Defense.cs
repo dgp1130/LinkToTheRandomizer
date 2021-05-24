@@ -11,7 +11,7 @@ using UnityEngine;
  * </summary>
  */
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Defense")]
-public class Defense : ScriptableObject
+public sealed class Defense : ScriptableObject
 {
     /** Resistence to base damage. */
     [SerializeField] public Resistence? BaseResist;

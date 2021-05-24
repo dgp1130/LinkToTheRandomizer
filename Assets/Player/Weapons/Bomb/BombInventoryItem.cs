@@ -2,7 +2,7 @@
 
 /** Represents bombs held in the player's inventory. */
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/BombInventoryItem")]
-public class BombInventoryItem : InventoryItem
+public sealed class BombInventoryItem : InventoryItem
 {
     /** How much damage a single bomb explosion does. */
     [SerializeField] public DamageConfig Damage;

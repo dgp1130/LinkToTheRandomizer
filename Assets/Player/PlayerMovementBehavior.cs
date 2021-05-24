@@ -130,7 +130,7 @@ public sealed class PlayerMovementBehavior : MonoBehaviour
      * <example>
      * <code>
      * [RequiredComponent(typeof(PlayerMovementBehavior))]
-     * public class SomeBehavior : MonoBehavior
+     * public sealed class SomeBehavior : MonoBehavior
      * {
      *     private PlayerMovementBehavior movementBehavior;
      *     
