@@ -3,6 +3,8 @@
 using UnityEngine;
 
 /** Manages the game logic for a bridge. */
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(BoxCollider2D))]
 public sealed class BridgeBehavior : MonoBehaviour
 {
     [Tooltip("Whether or not the bridge is visible for actors to cross with.")]
