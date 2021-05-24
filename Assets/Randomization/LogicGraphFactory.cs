@@ -1,4 +1,5 @@
 ﻿using DevelWithoutACause.Randomizer;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -36,6 +37,8 @@ public class LogicGraphFactory
                 },
             })
             .Select((check) => {
+                if (check.From != null && !allNodes.ContainsKey(check.From)) throw new ArgumentException($"Check {check.From} is listed in a `From` field but is not an actual node.");
+
                 var start = check.From != null ? allNodes[check.From] : startNode;
                 var end = allNodes[pair.Key];
                 var keys = check.Keys.Select((keyName) => allKeys[keyName])
