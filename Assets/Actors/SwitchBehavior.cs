@@ -2,6 +2,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 /** Behavior for a switch which flips between two states when struck. */
 [RequireComponent(typeof(SpriteRenderer))]
@@ -10,6 +11,7 @@ public sealed class SwitchBehavior : MonoBehaviour
     [SerializeField] private bool switchEnabled = false;
     [SerializeField] private Sprite disabledSprite = null!;
     [SerializeField] private Sprite enabledSprite = null!;
+    [SerializeField] private UnityEvent<bool> switched = null!;
     private new SpriteRenderer renderer = null!;
     private DefenseBehavior hurtBox = null!;
 
@@ -28,6 +30,8 @@ public sealed class SwitchBehavior : MonoBehaviour
     {
         switchEnabled = !switchEnabled;
         renderer.sprite = getSprite(switchEnabled);
+
+        switched?.Invoke(switchEnabled);
     }
 
     private Sprite getSprite(bool enabled)
