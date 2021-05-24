@@ -1,9 +1,11 @@
+#nullable enable
+
 using UnityEngine;
 
 public sealed class CheckBehavior : MonoBehaviour
 {
-    [SerializeField] Randomization randomization;
-    [SerializeField] ItemMapping itemMapping;
+    [SerializeField] Randomization randomization = null!;
+    [SerializeField] ItemMapping itemMapping = null!;
     [SerializeField] Check check;
 
     public void Awake()

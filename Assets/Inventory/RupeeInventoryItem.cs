@@ -1,3 +1,5 @@
+#nullable enable
+
 using UnityEngine;
 
 /** Represents some rupees held in the player's inventory. */

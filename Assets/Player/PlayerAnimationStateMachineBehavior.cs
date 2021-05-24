@@ -1,3 +1,5 @@
+#nullable enable
+
 using System;
 using System.Collections.Immutable;
 using System.Linq;
@@ -7,7 +9,7 @@ using UnityEngine;
 public sealed class PlayerAnimationStateMachineBehavior : StateMachineBehaviour
 {
     /** An event triggered when a sword slash animation is finished. */
-    public event EventHandler SwordSlashFinished;
+    public event EventHandler? SwordSlashFinished;
 
     public override void OnStateExit(
         Animator animator,

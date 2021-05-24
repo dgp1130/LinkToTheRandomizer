@@ -1,3 +1,5 @@
+﻿#nullable enable
+
 ﻿using UnityEngine;
 
 /** Represents bombs held in the player's inventory. */
@@ -5,7 +7,7 @@
 public sealed class BombInventoryItem : InventoryItem
 {
     /** How much damage a single bomb explosion does. */
-    [SerializeField] public DamageConfig Damage;
+    [SerializeField] public DamageConfig Damage = null!;
 
     /** How many bombs a player can hold in total. */
     [SerializeField] public int MaxBombs;

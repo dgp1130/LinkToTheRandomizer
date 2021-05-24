@@ -1,3 +1,5 @@
+﻿#nullable enable
+
 ﻿using UnityEngine;
 
 /** Represents a bow held in the player's inventory. */
@@ -5,7 +7,7 @@
 public sealed class BowInventoryItem : InventoryItem
 {
     /** How much damage a single arrow does. */
-    [SerializeField] public DamageConfig Damage;
+    [SerializeField] public DamageConfig Damage = null!;
 
     /** Speed of the arrow in units / second. */
     [Tooltip("Speed of an arrow in units per second.")]

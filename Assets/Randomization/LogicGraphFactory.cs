@@ -1,3 +1,5 @@
+﻿#nullable enable
+
 ﻿using DevelWithoutACause.Randomizer;
 using System;
 using System.Collections.Generic;

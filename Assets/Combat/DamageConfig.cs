@@ -1,3 +1,5 @@
+#nullable enable
+
 using UnityEngine;
 
 /** Scriptable object which defines the parameters necessary to create `Attack `objects. */

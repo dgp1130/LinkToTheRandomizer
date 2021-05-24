@@ -1,14 +1,15 @@
+#nullable enable
+
 using System;
-using DevelWithoutACause.Randomizer;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/ItemMapping")]
 public sealed class ItemMapping : ScriptableObject
 {
-    [SerializeField] GameObject swordPrefab;
-    [SerializeField] GameObject bowPrefab;
-    [SerializeField] GameObject bombPrefab;
-    [SerializeField] GameObject bluepeePrefab;
+    [SerializeField] GameObject swordPrefab = null!;
+    [SerializeField] GameObject bowPrefab = null!;
+    [SerializeField] GameObject bombPrefab = null!;
+    [SerializeField] GameObject bluepeePrefab = null!;
 
     public GameObject GetPrefab(Item item)
     {

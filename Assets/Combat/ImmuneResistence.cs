@@ -1,3 +1,5 @@
+﻿#nullable enable
+
 ﻿using UnityEngine;
 
 /** Resistence which blocks all incoming damage from the associated type. */

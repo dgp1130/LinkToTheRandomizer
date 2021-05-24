@@ -1,3 +1,5 @@
+#nullable enable
+
 using UnityEngine;
 
 /** Base class for an item held in the player's inventory. */
