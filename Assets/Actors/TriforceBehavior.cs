@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public sealed class TriforceBehavior : MonoBehaviour
 {
     [SerializeField] private TMP_Text victoryText = null!;
-    [SerializeField] private PlayerMovementBehavior player = null!;
     private SpriteRenderer sprite = null!;
 
     private void Awake()
