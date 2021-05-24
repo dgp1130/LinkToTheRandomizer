@@ -1,0 +1,33 @@
+{
+    "name": "TitleInputActions",
+    "maps": [
+        {
+            "name": "Title",
+            "id": "e5ea5057-3777-4242-89a9-05c8ba6badfc",
+            "actions": [
+                {
+                    "name": "Start Game",
+                    "type": "Button",
+                    "id": "0a332294-cf36-4a57-8c6f-31f46dd54c06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d0e04021-5142-463d-b5fe-8b35439bc4aa",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Game",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
