@@ -269,6 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc66c191e1e6a564e81ed25bc972f25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomization: {fileID: 11400000, guid: 2273c898ac3669e408f2544869c13d36, type: 2}
+  seedInput: {fileID: 1740550160}
 --- !u!1 &260511878
 GameObject:
   m_ObjectHideFlags: 0

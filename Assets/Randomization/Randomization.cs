@@ -10,12 +10,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LinkToTheRandomizer/Randomization")]
 public sealed class Randomization : ScriptableObject
 {
-    [SerializeField] int seed;
-    [SerializeField] TextAsset? logicFile;
+    [SerializeField] private int debugSeed;
+    [SerializeField] private TextAsset? logicFile;
 
     private ImmutableDictionary<Check, Item> randomizedItems = null!;
 
-    public void OnEnable()
+    public void Randomize(int seed)
     {
         var knownChecks = (Enum.GetValues(typeof(Check)) as Check[])
             .Select((check) => new KeyValuePair<string, Check>(
@@ -55,6 +55,10 @@ public sealed class Randomization : ScriptableObject
 
     public Item GetItemForCheck(Check check)
     {
-        return randomizedItems[check];
+        // If `Randomize()` was not called, then we must be doing a debug run of the Overworld
+        // scene. Lazily randomize with the debug seed value.
+        if (randomizedItems == null) Randomize(debugSeed);
+
+        return randomizedItems![check];
     }
 }
