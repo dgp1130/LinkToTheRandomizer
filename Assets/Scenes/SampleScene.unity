@@ -189,7 +189,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 217882096592558427, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: check
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1609576290911823102, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_Name
@@ -2102,7 +2102,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 217882096592558427, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: check
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1609576290911823102, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_Name
@@ -24419,6 +24419,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 217882096592558427, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
+      propertyPath: check
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1609576290911823102, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_Name
       value: Bushes Check
@@ -24616,7 +24620,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 217882096592558427, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: check
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1609576290911823102, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_Name
@@ -24632,11 +24636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4694081308379534938, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4694081308379534938, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 4694081308379534938, guid: 31e46e0d78b8b08428e8f64bc16cc9c6, type: 3}
       propertyPath: m_LocalPosition.z

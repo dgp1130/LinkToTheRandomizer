@@ -15,6 +15,12 @@
 #     >
 
 Checks:
+  FreeSpace:
+    Checkable: true
+
+  GrassyKnoll:
+    Checkable: true
+
   Bushes:
     Checkable: true
     Routes:
@@ -26,24 +32,19 @@ Checks:
     Checkable: false
 
   # Left check just requires access to the intermediate area.
-  Left:
+  Island:
     Checkable: true
     Routes:
     - From: Intermediate
-
-  Middle:
-    Checkable: true
+      Keys: [Bow]
 
   Rocks:
     Checkable: true
     Routes:
     - Keys: [Bomb]
 
-  GrassyKnoll:
-    Checkable: true
-
   # End requires Sword, Bow, AND Bombs.
   End:
     Routes:
-    - From: Middle
+    - From: FreeSpace
       Keys: [Sword, Bow, Bomb]
