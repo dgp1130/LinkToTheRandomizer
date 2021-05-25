@@ -210,10 +210,10 @@ namespace DevelWithoutACause.Randomizer
         private sealed class RandomizationState
         {
             /** The current graph with some keys placed. */
-            public LogicGraph Graph { get; set; }
+            public LogicGraph Graph { get; set; } = null!;
 
             /** Keys currently accessible to the player with the current graph state. */
-            public ImmutableSortedSet<LogicKey> AccessibleKeys { get; set; }
+            public ImmutableSortedSet<LogicKey> AccessibleKeys { get; set; } = null!;
         }
     }
 }
