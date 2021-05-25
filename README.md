@@ -55,3 +55,16 @@ about.
 
 If this seems interesting, [try out the game!](https://lttr.dwac.dev/game.html)
 (it takes like 10 seconds to beat and runs right in your browser).
+
+## Deployment
+
+Game can be built for release by opening Unity and going to
+`File > Build Settings`, selecting `WebGL`, and clicking `Build`. Pick an output
+direction (such as `bin/` in the project directory) and wait a few minutes for
+it to build (WebGL builds are very slow).
+
+To deploy, run from the repository root:
+
+```shell
+npx netlify-cli@3.30.7 --site ${SITE_ID} --prod
+```
