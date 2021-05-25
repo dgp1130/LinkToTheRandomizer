@@ -26,6 +26,9 @@ namespace DevelWithoutACause.Randomizer
             return new Pool<T>(pool: initialPool.ToList());
         }
 
+        /** Whether or not the pool is empty. */
+        public bool Empty { get => pool.Count == 0; }
+
         private T take(int index)
         {
             var value = pool[index];

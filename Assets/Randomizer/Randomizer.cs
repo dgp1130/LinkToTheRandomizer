@@ -70,6 +70,19 @@ namespace DevelWithoutACause.Randomizer
                 // Stop once all locations are reachable.
             } while (!allLocationsReachable(state.Graph, startNodes, state.AccessibleKeys));
 
+            // All locations are now reachable, but there may be some optional keys left in the
+            // pool. Place them all randomly.
+            while (!keyPool.Empty)
+            {
+                state = placeKey(
+                    state: state,
+                    startNodes: startNodes,
+                    nodePool: nodePool,
+                    keyPool: keyPool,
+                    rng: rng
+                );
+            }
+
             // All locations are now reachable, so this is completable in-logic. Note that
             // some locations may still be empty as they are not required.
             return state.Graph;
@@ -114,7 +127,9 @@ namespace DevelWithoutACause.Randomizer
 
             // Pick a node and key at random.
             var node = nodePool.TakeRandomFrom(rng, availableNodes);
-            var key = keyPool.TakeRandomFrom(rng, boundaryKeys);
+            var key = boundaryKeys.Count() != 0
+                ? keyPool.TakeRandomFrom(rng, boundaryKeys) // Pick a boundary key.
+                : keyPool.TakeRandom(rng); // No boundary keys remaining, just pick any key.
 
             // Transform the graph to place the single key at the given node and grant the
             // player the new key.
