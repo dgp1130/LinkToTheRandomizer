@@ -42,10 +42,11 @@ mechanics like a hint system, limiting keys to a particular area (dungeon), or a
 hand-made "plandomizer" would require some work, but would definitely be
 doable in a cross-game compatible fashion.
 
-Another cool aspect is that the randomization algorithm is upper-bounded and
-does not perform any kind of "guess and check" strategy. This means that it will
-always generate a valid seed on the first try and will never fail because "I
-tried X times and failed to find a beatable seed".
+Another cool aspect is that the
+[randomization algorithm](https://github.com/dgp1130/LinkToTheRandomizer/blob/main/Assets/Randomizer/Randomizer.cs)
+is upper-bounded and does not perform any kind of "guess and check" strategy.
+This means that it will always generate a valid seed on the first try and will
+never fail because "I tried X times and failed to find a beatable seed".
 
 Beyond that, I also just used this as an opportunity to learn
 [Unity](https://unity.com/) and C#, as I'm not very familiar with either.
