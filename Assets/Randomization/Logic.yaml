@@ -43,8 +43,9 @@ Checks:
     Routes:
     - Keys: [Bomb]
 
-  # End requires Sword, Bow, AND Bombs.
+  # End requires Bow AND Bombs.
+  # Note that sword is not required because bombs can blow up bushes.
   End:
     Routes:
     - From: FreeSpace
-      Keys: [Sword, Bow, Bomb]
+      Keys: [Bow, Bomb]
