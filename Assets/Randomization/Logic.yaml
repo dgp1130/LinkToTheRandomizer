@@ -27,11 +27,13 @@ Checks:
     - Keys: [Sword]
     - Keys: [Bomb] # Can also blast bushes away.
 
-  # No requirements for a second location, but no check here.
+  # No requirements for a second location, but no check here. This just serves
+  # as any empty location that can be blocked by keys and used as a `From` value
+  # for other checks.
   Intermediate:
     Checkable: false
 
-  # Left check just requires access to the intermediate area.
+  # Island requires a bow to shoot the switch.
   Island:
     Checkable: true
     Routes:

@@ -58,13 +58,14 @@ public sealed class BuildPostProcess
                 ""designed from scratch"" randomizer.</p>
 
                 <p>On the technical side, there are a few interesting aspects about the randomizer itself. Firstly, it has no
-                knowledge of the game it is actually randomizing, with all logic and mechanics expressed via the YAML logic file.
+                knowledge of the game it is actually randomizing, with all logic and mechanics expressed via the
+                <a href=""https://github.com/dgp1130/LinkToTheRandomizer/blob/main/Assets/Randomization/Logic.yaml"">YAML logic file</a>.
                 The logic file simply describes a graph with locks and keys. The locks describe the state of the game world and its
                 mechanics, while the keys are randomly placed in a logically solvable fashion. It's quite simple and reusable across
                 any game with a similar logic philosophy. It can already support features like allowing players to define specific
                 glitches they can perform and will allow in logic, just by treating those as a key given to the player at game start.
                 Other mechanics like a hint system, limiting keys to a particular area (dungeon), or a hand-made ""plandomizer"" would
-                require some work, but would defintely be doable in a cross-game compatible fashion.</p>
+                require some work, but would definitely be doable in a cross-game compatible fashion.</p>
 
                 <p>Another cool aspect is that the randomization algorithm is upper-bounded and does not perform any kind of ""guess
                 and check"" strategy. This means that it will always generate a valid seed on the first try and will never fail because
